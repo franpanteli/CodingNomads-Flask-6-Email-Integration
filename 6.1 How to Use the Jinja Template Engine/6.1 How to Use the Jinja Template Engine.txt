@@ -1,0 +1,94 @@
+-> Build Your First Flask App Lesson  
+   -> What are URLs and Routes?  
+   -> 11 min to complete  
+   -> By Brandon Gigous  
+
+-> Introduction  
+   -> In this lesson, you will dive deeper into two fundamental concepts in web development: URLs and routes, which are core to how Flask operates  
+   -> Understanding URLs and routes is essential for developing Flask applications as they enable Flask to map incoming web requests to specific Python functions, allowing dynamic responses to user actions  
+   -> This lesson will explore how these components interact in the Flask web framework to ensure requests are routed to the correct view functions  
+
+-> What is a URL?  
+   -> URL stands for Uniform Resource Locator, commonly known as a web address  
+   -> It specifies the location of a resource (like a webpage or image) on the internet  
+   -> A URL is broken down into several parts:  
+      -> Protocol: Indicates the method used to transfer data, like "http://" or "https://"  
+      -> Host: The domain name or IP address of the server hosting the resource, like "example.com"  
+      -> Path: Specifies the exact location of the resource on the server, like "/about", "/contact", or "/images/pic.jpg"  
+      -> Query parameters (optional): Used to send additional data to the server, for example: "?id=123&name=John"  
+      -> Fragment (optional): Refers to a specific section within a resource, e.g., "#section1"  
+
+-> Requests and Responses  
+   -> When a user enters a URL into their browser, a request is sent to the web server  
+   -> The request specifies which resource the user wants, as identified by the path in the URL  
+   -> The web server processes the request and returns a response containing the requested resource or a related message (e.g., error or redirect)  
+   -> For example, a request to "http://example.com/about" asks for the "About" page  
+   -> The server handles the request by calling the appropriate view function, processes it, and sends back the response in the form of HTML, JSON, or other types of data  
+
+-> Paths  
+   -> The path in the URL is crucial as it tells the server which resource or page the user is requesting  
+   -> A path is everything after the domain name in the URL:  
+      -> Example 1: "http://example.com/about" -> "/about" is the path  
+      -> Example 2: "http://example.com/" -> "/" represents the homepage or root  
+   -> In Flask, the path is used to map to a view function, which contains the logic to generate the correct response  
+   -> The root path ("/") is usually mapped to the main homepage of the application, and other paths (e.g., "/about") are used for other pages or resources  
+   -> Flask’s path handling is flexible, allowing dynamic values to be passed in paths (like "/user/<username>")  
+
+-> Routes and View Functions in Flask  
+   -> A route in Flask defines the mapping between a URL path and a function (view function) that will handle the request for that path  
+   -> A route tells Flask which Python function to call when a user visits a specific URL  
+   -> In Flask, routes are often defined using decorators, which allow functions to be "decorated" with a mapping to a URL  
+   -> The syntax for defining routes is @app.route(), followed by the URL path and the function to handle the request:  
+     
+python  
+     @app.route('/about')  
+     def about_us():  
+         return "<p>A blurb about this website</p>"
+  
+   -> In the above example, the @app.route('/about') decorator maps the "/about" path to the "about_us" function  
+   -> When a user visits "http://localhost:5000/about", Flask calls the "about_us" function and returns the HTML content as a response  
+   -> You can also use the app.add_url_rule() method to add routes programmatically:  
+     
+python  
+     app.add_url_rule('/about', 'about_us', about_us)
+  
+   -> This method takes three arguments: the URL path, the name for the route (endpoint), and the view function that should be called for that route  
+   -> This is useful when you want to add routes dynamically, especially in larger applications  
+
+-> Endpoint Names  
+   -> An endpoint name refers to a symbolic name that identifies the view function for a given route  
+   -> Flask automatically assigns the name of the view function as the endpoint, but you can also manually set the endpoint name using the endpoint argument in app.add_url_rule()  
+   -> Endpoint names are helpful for generating URLs dynamically, especially for things like redirects or generating links in templates  
+   -> Example:  
+     
+python  
+     app.add_url_rule('/about', endpoint='about_us', view_func=about_us)
+  
+   -> By explicitly setting the endpoint name, you can refer to this route later in your application, making the code more maintainable and flexible  
+   -> For instance, if you need to generate the URL for this route elsewhere in your application, you can use `url_for('about_us')` to get the corresponding URL for the route  
+   -> This helps avoid hardcoding URLs throughout your application  
+
+-> HTML Responses  
+   -> In Flask, view functions often return HTML content, which the browser renders as a webpage  
+   -> For example, in the function about_us(), the string "<p>A blurb about this website</p>" is returned, and the browser will display the HTML content within the tags  
+   -> Flask makes it easy to generate dynamic HTML content by using Jinja templates, which allow you to insert variables and control structures into the HTML  
+   -> Jinja templating will be covered in a later lesson, but for now, it’s important to understand that Flask can send complex, dynamic content to the browser through view functions  
+
+-> Summary: What are URLs and Routes?  
+   -> A URL (Uniform Resource Locator) is a web address used to locate resources on the internet  
+   -> The structure of a URL includes:  
+      -> Protocol (e.g., "http://", "https://")  
+      -> Host (e.g., domain name or IP address)  
+      -> Path (e.g., "/about", "/contact")  
+   -> In Flask, routes map URL paths to view functions, allowing Flask to know which function to execute when a user visits a specific path  
+   -> You can define routes using the @app.route() decorator, or by using app.add_url_rule() to add routes programmatically  
+   -> When a user visits a URL, Flask executes the associated view function and returns a response, often HTML, to the browser  
+
+-> Example Code for /about route  
+   
+python  
+   @app.route('/about')  
+   def about_us():  
+       return "<p>A blurb about this website</p>"  
+-> When a user navigates to "http://localhost:5000/about", Flask will return the response:
+"<p>A blurb about this website</p>"

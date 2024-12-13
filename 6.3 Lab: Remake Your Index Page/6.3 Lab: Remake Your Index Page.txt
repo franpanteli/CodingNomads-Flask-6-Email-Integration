@@ -1,0 +1,28 @@
+-> Flask Templates, Jinja, and You Lesson  
+   -> Lab: Remake Your Index Page  
+   -> 3 min to complete á By Brandon Gigous  
+
+-> In this lab, you will use the knowledge you've gained in the section to enhance your template by adding a navigation bar (navbar).  
+   -> This is a practical exercise to make your webpage layout more dynamic and structured.  
+   -> You will also get hands-on experience in improving your template's design using Bootstrap, which is a framework that helps you create responsive and stylish webpages easily.  
+
+-> Learn by Doing  
+
+-> Inheritance in Templates  
+   -> Inheritance allows you to reuse common structures in your templates.  
+   -> This means you don't need to repeat the same HTML code in every page; instead, you extend a base template and define blocks that can be overridden in child templates.  
+   -> Make sure to extend your template with another template using the `extends` keyword to reuse the layout.  
+   -> Refer to the Inheritance FAQ provided in this section for detailed guidance on using inheritance effectively. It will be useful if you encounter issues with this process.  
+
+-> Welcome Message  
+   -> Your index page originally included a welcome message. Keep it, but adjust it to ensure it fits well with Bootstrap's styling and layout.  
+   -> The message should now be part of a well-structured page, with appropriate use of classes and blocks to ensure it displays correctly.  
+   -> Hint: You may need to use a block tag to make it more flexible, allowing it to be easily inserted or modified in different child templates.  
+
+-> Your overall template should not exceed 10 lines of code. If it does, review the examples given in the section to ensure you're applying the concepts correctly.  
+   -> Simple and concise code is key in web development, and this will help you understand how to maintain clean, readable templates.  
+
+-> Coming Up  
+   -> Your templates are now taking shape as real, functional webpages! Great progress so far.  
+   -> In the next section, you will learn how to handle errors in Flask applications.  
+   -> You will also learn how to customise error pages, replacing the default ones with professional, user-friendly pages that improve the user experience.  

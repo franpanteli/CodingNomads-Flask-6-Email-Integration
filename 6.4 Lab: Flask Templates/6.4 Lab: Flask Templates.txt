@@ -1,0 +1,18 @@
+-> Flask Templates, Jinja, and You Lesson  
+   -> Lab: Flask Templates  
+   -> 3 min to complete á By Brandon Gigous  
+
+-> If you have not already cloned the Python Flask labs project and opened it in VS Code,  
+   -> please do so before proceeding with this lab  
+
+-> Learn by Doing  
+   -> 1. Navigate to the labs project directory and open it in VS Code  
+   -> 2. Complete all the exercises found in the folder. There are three labs to work through:  
+      -> 06_page_templates_jinja: Focuses on working with Jinja templates in Flask  
+      -> 01_rendering_the_routes: Covers rendering routes in a Flask application  
+      -> 02_template_inheritance: Teaches template inheritance in Flask for reusability and DRY code  
+      -> 03_flask_bootstrap: Introduces Flask Bootstrap for integrating front-end styling and components  
+
+-> 3. If youÕre subscribed to the membership or mentorship programmes, feel free to reach out on Discord for assistance or a review of your work!  
+
+-> 4. Once you have completed the labs, ensure you push your work to GitHub for version control and sharing with others  

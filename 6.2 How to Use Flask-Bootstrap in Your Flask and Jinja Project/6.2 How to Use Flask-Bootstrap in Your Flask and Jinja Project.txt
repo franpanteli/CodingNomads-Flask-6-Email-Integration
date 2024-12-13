@@ -1,0 +1,115 @@
+-> Flask Templates, Jinja, and You Lesson  
+   -> How to Use Flask-Bootstrap in Your Flask and Jinja Project  
+   -> 10 min to complete á By Brandon Gigous  
+
+-> Introduction  
+   -> This lesson explains how to install and use Flask-Bootstrap in your Python-Flask projects  
+   -> It walks through how to integrate the Bootstrap framework into Flask templates to make web pages look professional with minimal effort  
+   -> Flask-Bootstrap is a powerful tool that helps with UI components, providing pre-built, responsive templates  
+
+-> What is Bootstrap?  
+   -> Bootstrap is an open-source framework for web development, originally created by Twitter  
+   -> It provides a collection of pre-styled UI components like buttons, forms, navigation bars, and grids that are compatible with modern browsers on both desktop and mobile devices  
+   -> Bootstrap works mainly through CSS and JavaScript files to style HTML content  
+   -> Flask-Bootstrap is an extension that simplifies adding Bootstrap to Flask apps  
+   -> Bootstrap helps save time by allowing developers to create aesthetically pleasing websites quickly with responsive design that adapts to various screen sizes  
+
+-> How to Use Flask-Bootstrap  
+   -> Flask-Bootstrap helps Flask developers integrate Bootstrap into their apps without manually adding the required CSS and JavaScript files  
+   -> To start using Flask-Bootstrap, you need to install the extension via pip:  
+     ```  
+     $ pip install flask-bootstrap  
+     ```  
+   -> After installation, you need to initialise Flask-Bootstrap by creating a Flask app and passing it to the `Bootstrap` instance:  
+     ```python  
+     from flask_bootstrap import Bootstrap  
+     app = Flask(__name__)  
+     bootstrap = Bootstrap(app)  
+     ```  
+   -> Extensions must be initialised in the same instance as the Flask app to work correctly  
+   -> The `Bootstrap(app)` statement links the Flask-Bootstrap extension with the Flask application, allowing you to use all the Bootstrap features  
+
+-> Flask-Bootstrap Base Template  
+   -> Flask-Bootstrap provides a built-in base template (`bootstrap/base.html`) that includes all the necessary Bootstrap files (CSS and JavaScript)  
+   -> By extending this base template, you donÕt need to manually add BootstrapÕs styles and scripts to your templates  
+   -> This template handles all the integration and styling for you  
+   -> You can extend the `base.html` template in your appÕs templates by adding the following at the top of your HTML file:  
+     ```  
+     {% extends "bootstrap/base.html" %}  
+     ```  
+   -> This line tells Flask to use the Bootstrap template as the base for the current template  
+
+-> Flask-Bootstrap Template Blocks  
+   -> The `bootstrap/base.html` file contains several template blocks that you can override to customise the content of your pages  
+   -> These blocks serve as placeholders for various parts of your page (e.g., title, navbar, content)  
+   -> Common template blocks provided by Flask-Bootstrap:  
+     - `block title`: The block that defines the page title in the `<head>` section  
+     - `block navbar`: The block that defines the navigation bar  
+     - `block content`: The block that contains the main content of the page  
+
+-> Example Code for Base Template  
+   -> A typical base template using Flask-Bootstrap might look like this:  
+     ```  
+     {% extends "bootstrap/base.html" %}  
+     {% block title %}{{ super() }}Ragtime -{% endblock %}  
+     {% block navbar %}  
+     <div class="navbar navbar-default" role="navigation">  
+     <div class="container">  
+     <div class="navbar-header">  
+     <button type="button" class="navbar-toggle collapsed">  
+     <span class="sr-only">Toggle navigation</span>  
+     <span class="icon-bar"></span>  
+     <span class="icon-bar"></span>  
+     <span class="icon-bar"></span>  
+     </button>  
+     <a class="navbar-brand" href="/">Ragtime</a>  
+     </div>  
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">  
+     <ul class="nav navbar-nav">  
+     <li><a href="/">Home</a></li>  
+     </ul>  
+     </div>  
+     </div>  
+     </div>  
+     {% endblock %}  
+     {% block content %}  
+     <div class="container">  
+     {% block page_content %}{% endblock %}  
+     </div>  
+     {% endblock %}  
+     ```  
+   -> The above code does the following:  
+     - The `extends "bootstrap/base.html"` makes the template inherit all the necessary Bootstrap code  
+     - The `block title` overrides the title tag to append "Ragtime -" to the default title  
+     - The `block navbar` overrides the default navigation bar and customises it with a "Ragtime" brand link and a "Home" link  
+     - The `block content` provides a container where the main page content will be placed  
+
+-> Modifying Templates  
+   -> You can customise templates further by overriding blocks like `title`, `navbar`, and `content`  
+   -> For example, in a user profile page, you could modify the `title` block to display the userÕs name dynamically  
+   -> Here's an example template (`user.html`) that extends the base template and customises the content:  
+     ```  
+     {% extends "base.html" %}  
+     {% block title %}{{ super() }}{% if username %}User {{ username }}{% endif %}{% endblock %}  
+     {% block navbar %}{{ super() }}{% endblock %}  
+     {% block content %}  
+     <h1>  
+     {% if username %}  
+     Hello, {{ username }}!  
+     {% else %}  
+     Hello, Anonymous!  
+     {% endif %}  
+     </h1>  
+     {% endblock %}  
+     ```  
+   -> In this template:  
+     - The `title` block conditionally displays the userÕs name if a `username` variable is passed to the template  
+     - The `navbar` block is overridden using `{{ super() }}` to include the original navbar content  
+     - The `content` block conditionally displays a personalised greeting: "Hello, [username]!" or "Hello, Anonymous!" depending on whether the `username` variable is set  
+
+-> Summary  
+   -> Flask-Bootstrap is an extension that simplifies the integration of Bootstrap into Flask applications  
+   -> It provides a pre-styled base template that includes BootstrapÕs CSS and JavaScript files, saving time for developers  
+   -> You can extend this base template and override its blocks (like `title`, `navbar`, and `content`) to customise your pages  
+   -> This approach helps avoid repetitive code and allows for easy styling of web pages with minimal effort  
+   -> By using Jinja template blocks, you can dynamically insert content into specific sections of your pages (like the title or user-specific information)  
