@@ -1,7 +1,5 @@
 -> Build Your First Flask App Lesson  
    -> What are URLs and Routes?  
-   -> 11 min to complete  
-   -> By Brandon Gigous  
 
 -> Introduction  
    -> In this lesson, you will dive deeper into two fundamental concepts in web development: URLs and routes, which are core to how Flask operates  
@@ -32,7 +30,7 @@
       -> Example 2: "http://example.com/" -> "/" represents the homepage or root  
    -> In Flask, the path is used to map to a view function, which contains the logic to generate the correct response  
    -> The root path ("/") is usually mapped to the main homepage of the application, and other paths (e.g., "/about") are used for other pages or resources  
-   -> Flask’s path handling is flexible, allowing dynamic values to be passed in paths (like "/user/<username>")  
+   -> Flask's path handling is flexible, allowing dynamic values to be passed in paths (like "/user/<username>")  
 
 -> Routes and View Functions in Flask  
    -> A route in Flask defines the mapping between a URL path and a function (view function) that will handle the request for that path  
@@ -72,7 +70,7 @@ python
    -> In Flask, view functions often return HTML content, which the browser renders as a webpage  
    -> For example, in the function about_us(), the string "<p>A blurb about this website</p>" is returned, and the browser will display the HTML content within the tags  
    -> Flask makes it easy to generate dynamic HTML content by using Jinja templates, which allow you to insert variables and control structures into the HTML  
-   -> Jinja templating will be covered in a later lesson, but for now, it’s important to understand that Flask can send complex, dynamic content to the browser through view functions  
+   -> Jinja templating will be covered in a later lesson, but for now, it's important to understand that Flask can send complex, dynamic content to the browser through view functions  
 
 -> Summary: What are URLs and Routes?  
    -> A URL (Uniform Resource Locator) is a web address used to locate resources on the internet  

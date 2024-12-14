@@ -1,6 +1,5 @@
 -> Flask Templates, Jinja, and You Lesson  
    -> Lab: Remake Your Index Page  
-   -> 3 min to complete á By Brandon Gigous  
 
 -> In this lab, you will use the knowledge you've gained in the section to enhance your template by adding a navigation bar (navbar).  
    -> This is a practical exercise to make your webpage layout more dynamic and structured.  

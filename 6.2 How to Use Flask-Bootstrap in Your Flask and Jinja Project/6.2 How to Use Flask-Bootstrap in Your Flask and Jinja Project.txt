@@ -1,6 +1,5 @@
 -> Flask Templates, Jinja, and You Lesson  
    -> How to Use Flask-Bootstrap in Your Flask and Jinja Project  
-   -> 10 min to complete á By Brandon Gigous  
 
 -> Introduction  
    -> This lesson explains how to install and use Flask-Bootstrap in your Python-Flask projects  
@@ -31,9 +30,9 @@
 
 -> Flask-Bootstrap Base Template  
    -> Flask-Bootstrap provides a built-in base template (`bootstrap/base.html`) that includes all the necessary Bootstrap files (CSS and JavaScript)  
-   -> By extending this base template, you donÕt need to manually add BootstrapÕs styles and scripts to your templates  
+   -> By extending this base template, you don't need to manually add Bootstrap's styles and scripts to your templates  
    -> This template handles all the integration and styling for you  
-   -> You can extend the `base.html` template in your appÕs templates by adding the following at the top of your HTML file:  
+   -> You can extend the `base.html` template in your app's templates by adding the following at the top of your HTML file:  
      ```  
      {% extends "bootstrap/base.html" %}  
      ```  
@@ -86,7 +85,7 @@
 
 -> Modifying Templates  
    -> You can customise templates further by overriding blocks like `title`, `navbar`, and `content`  
-   -> For example, in a user profile page, you could modify the `title` block to display the userÕs name dynamically  
+   -> For example, in a user profile page, you could modify the `title` block to display the user's name dynamically  
    -> Here's an example template (`user.html`) that extends the base template and customises the content:  
      ```  
      {% extends "base.html" %}  
@@ -103,13 +102,13 @@
      {% endblock %}  
      ```  
    -> In this template:  
-     - The `title` block conditionally displays the userÕs name if a `username` variable is passed to the template  
+     - The `title` block conditionally displays the user's name if a `username` variable is passed to the template  
      - The `navbar` block is overridden using `{{ super() }}` to include the original navbar content  
      - The `content` block conditionally displays a personalised greeting: "Hello, [username]!" or "Hello, Anonymous!" depending on whether the `username` variable is set  
 
 -> Summary  
    -> Flask-Bootstrap is an extension that simplifies the integration of Bootstrap into Flask applications  
-   -> It provides a pre-styled base template that includes BootstrapÕs CSS and JavaScript files, saving time for developers  
+   -> It provides a pre-styled base template that includes Bootstrap's CSS and JavaScript files, saving time for developers  
    -> You can extend this base template and override its blocks (like `title`, `navbar`, and `content`) to customise your pages  
    -> This approach helps avoid repetitive code and allows for easy styling of web pages with minimal effort  
    -> By using Jinja template blocks, you can dynamically insert content into specific sections of your pages (like the title or user-specific information)  
