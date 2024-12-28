@@ -1,0 +1,55 @@
+-> Creating and Using Templates in Flask
+    -> Overview of the demo
+        -> Demonstrating how to create and use templates in Flask through a code demo
+        -> Topics covered: rendering placeholder variables, conditional rendering, and loops in templates
+        -> These skills are essential for developing a strong foundation in template creation
+        -> Useful for future parts of the course
+
+    -> Preparation
+        -> Make a copy of your Flask project folder and rename it to "template_examples"
+        -> Install two Visual Studio Code extensions:
+            -> "Better Jinja" 
+            -> "Jinja"
+        -> These extensions enhance the coding experience
+
+    -> Creating the basic user route
+        -> Create a route with the path `/user`
+        -> Define a view function for this route
+        -> Previously returned plain strings, now returning a template
+        -> Flask requires a `templates` folder to store all your template files
+        -> Create the `templates` folder in your project directory
+        -> Add a new HTML file called `user.html`
+        -> Write a simple greeting message in the HTML file (e.g., "Hello, user!")
+
+    -> Rendering the template
+        -> In your Python file, import `render_template` function from Flask
+        -> Link the view function with the template using `render_template`
+        -> Update the view function to return a response handled by `render_template`
+        -> Specify the `user.html` file as the template to render
+        -> Launch the Flask app and navigate to `/user`
+        -> The greeting message will be displayed on the webpage
+
+    -> Making the route dynamic
+        -> Modify the route to `/user/<username>`
+        -> Update the view function to pass the `username` variable to the template
+        -> Flask sends variables to Jinja as keyword arguments
+        -> Add `username` as a keyword argument in the view function
+        -> Set its value to the corresponding part of the URL path
+        -> In the `user.html` template, add a placeholder using double curly braces (`{{ username }}`)
+        -> This placeholder tells Jinja to dynamically render the value passed from Flask
+        -> Test the route by entering a username in the path (e.g., `/user/Tim`)
+        -> The webpage will display a personalised greeting (e.g., "Hello, Tim!")
+
+    -> Conditional Rendering in Templates
+        -> Conditional rendering allows you to display specific content based on variables
+        -> Example: Check if a user is an admin and display additional options
+        -> Jinja's syntax for conditions is simple and enhances template flexibility
+
+    -> Using Loops in Templates
+        -> Loops allow you to render repetitive elements like lists or tables dynamically
+        -> Example: Render a list of items or a table of data
+        -> Loops combined with placeholders and conditions make templates powerful and efficient
+
+    -> Conclusion
+        -> By combining placeholders, conditions, and loops, templates become versatile tools for web development
+        -> With these foundational skills, you are equipped to build dynamic Flask applications

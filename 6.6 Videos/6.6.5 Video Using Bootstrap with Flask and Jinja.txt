@@ -1,0 +1,98 @@
+-> Installing Initial Bootstrap in Flask and Creating Base Templates
+    -> Setting up Flask with Bootstrap
+        -> Begin by ensuring that your virtual environment is activated in your terminal (use `source venv/bin/activate` for Unix-based systems or `venv\Scripts\activate` for Windows)
+        -> Install Flask-Bootstrap to integrate Bootstrap into your Flask app. This can be done by running:
+            ```
+            pip install flask-bootstrap
+            ```
+        -> Once Flask-Bootstrap is installed, import the `Bootstrap` class from the `flask_bootstrap` package:
+            ```python
+            from flask_bootstrap import Bootstrap
+            ```
+        -> Initialise the `Bootstrap` object by passing your Flask app instance into it:
+            ```python
+            app = Flask(__name__)
+            Bootstrap(app)
+            ```
+        -> This integrates the Bootstrap CSS framework into your Flask app, enabling you to use Bootstrap’s predefined styles and components across your templates.
+        -> By including Flask-Bootstrap, you don't have to manually add the Bootstrap CSS links to every template; it automatically includes them.
+
+    -> Creating the Templates Folder
+        -> Create a `templates` folder in the root of your Flask project directory. Flask will automatically look for HTML files in this directory when rendering templates.
+        -> Inside the `templates` folder, create the `base.html` file. This file will contain the common structure and layout for all your pages.
+        -> The `base.html` file will serve as a foundation that other templates can extend to maintain consistency across your app.
+
+    -> Base Template Setup
+        -> The `base.html` file is your starting point and will include HTML structure along with Bootstrap’s default styling and layout.
+        -> In `base.html`, set up the HTML structure:
+            - The `<html>` tag should wrap the entire page.
+            - Inside the `<head>` tag, link to the Bootstrap CSS file from the Bootstrap CDN:
+                ```html
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+                ```
+            - Inside the `<body>` tag, define reusable sections such as navigation bars, footers, and placeholders for dynamic content.
+
+    -> Adding Blocks for Custom Content
+        -> Bootstrap provides predefined blocks, which you can leverage and extend in your templates. A block is a section of content that can be overridden in child templates.
+        -> In the `base.html` template, create `block` tags for the title and content that can be customised by any template that extends it:
+            ```html
+            <title>{% block title %}My Application{% endblock %}</title>
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+            </div>
+            ```
+        -> The `{% block %}` syntax defines sections that can be overridden in child templates. For example, the `{% block title %}` will allow different pages to have unique titles, while `{% block content %}` will define where the page content goes.
+
+    -> Extending the Base Template
+        -> Once the base template is defined, you can extend it in other templates such as `user.html`.
+        -> In `user.html`, use the `{% extends "base.html" %}` directive to inherit the structure and styles defined in `base.html`:
+            ```html
+            {% extends "base.html" %}
+            ```
+        -> After extending the base template, you can override the blocks defined in `base.html`. For instance, you can change the title for the user page and provide content specific to that page:
+            ```html
+            {% block title %}User Profile{% endblock %}
+            {% block content %}
+                <h1>Welcome, {{ username }}!</h1>
+            {% endblock %}
+            ```
+        -> The `{% block content %}` allows dynamic content (such as the username) to be inserted into the page, which will be displayed in the layout defined in `base.html`.
+
+    -> Testing with Flask App
+        -> Once the `base.html` and `user.html` templates are set up, it’s time to run the Flask app.
+        -> Open your terminal, navigate to your project directory, and start the Flask app by running:
+            ```
+            flask run
+            ```
+        -> This will start the Flask development server. Open your browser and visit the `user.html` route (e.g., `/user/<username>`) to see if the template is correctly inheriting from `base.html` and applying Bootstrap styling.
+        -> The page should now have the Bootstrap layout and any dynamic content you’ve defined, such as the username.
+
+    -> Troubleshooting Content Rendering
+        -> If the greeting message doesn’t appear or if there are layout issues, check the following:
+            - Ensure that the content is properly wrapped inside the `{% block content %}` section in `base.html`.
+            - Make sure that the `username` variable is being passed correctly from your route to the template in the `render_template` function.
+            - Verify that you're using the correct template file names (e.g., `user.html` should extend `base.html`, and you should be calling `render_template("user.html", username=username)`).
+
+    -> Making Conditional Content Display
+        -> In many cases, you may need to conditionally display content. For example, you might only want to show the username if it's defined.
+        -> Use Jinja conditionals to achieve this, similar to Python’s `if` statements:
+            ```html
+            {% if username %}
+                <p>Hello, {{ username }}!</p>
+            {% else %}
+                <p>Welcome, guest!</p>
+            {% endif %}
+            ```
+        -> This checks if the `username` variable is defined and renders a personalised greeting if it is. Otherwise, it renders a generic message for a guest.
+
+    -> Final Testing
+        -> After setting up the base template and extending it with a user template, test the app again to verify that the content is displayed properly.
+        -> Refresh your browser and navigate to the `/user/<username>` route. If the username is defined, you should see a personalised greeting. If the username is not defined, the "Welcome, guest!" message will appear.
+        -> Make sure the Bootstrap layout is applied consistently across different pages, and the conditional rendering works as expected.
+
+    -> Conclusion
+        -> In this video, you learned how to integrate Bootstrap with Flask by using Flask-Bootstrap to automatically include Bootstrap’s CSS.
+        -> You created a base template (`base.html`) that includes common page elements like the title, navigation, and content areas, and then extended this template in a user-specific template (`user.html`).
+        -> You also explored how to use Jinja’s `{% block %}` syntax to define reusable sections and override them in child templates.
+        -> By following these steps, you can build a consistent layout across your Flask application with minimal redundancy while using Bootstrap’s responsive design.
