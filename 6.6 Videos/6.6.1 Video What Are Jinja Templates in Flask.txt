@@ -1,60 +1,60 @@
--> Templates in Flask with Jinja
-    -> What is a template
-        -> A tool that allows developers to reuse most parts of a webpage while modifying specific elements
-        -> Provides a way to handle dynamic content within static HTML structure
-        -> Example: Dynamic greeting for a user logging in (e.g., "Hello, user Tim")
-        -> Template contains static text and placeholders for dynamic parts (e.g., user’s name)
-        -> These placeholders are replaced during rendering
+-> templates in flask with jinja  
+    -> what is a template  
+        -> a tool that allows developers to reuse most parts of a webpage while modifying specific elements  
+        -> provides a way to handle dynamic content within static html structure  
+        -> example: dynamic greeting for a user logging in (e.g., "hello, user tim")  
+        -> template contains static text and placeholders for dynamic parts (e.g., user’s name)  
+        -> these placeholders are replaced during rendering  
 
-    -> Purpose of a template
-        -> Reuse common HTML code for different pages while only altering specific parts dynamically
-        -> Helps maintain consistency across web pages while allowing customisation for dynamic content
-        -> Dynamically render values into placeholders using data passed from view functions
+    -> purpose of a template  
+        -> reuse common html code for different pages while only altering specific parts dynamically  
+        -> helps maintain consistency across web pages while allowing customisation for dynamic content  
+        -> dynamically render values into placeholders using data passed from view functions  
 
-    -> How templates are used in Flask
-        -> View function passes data (e.g., user’s name) to a template
-        -> Flask's render_template function is used to load the template from the templates folder
-        -> Template files are stored in a directory called `templates` within the project structure
-        -> Flask automatically searches the templates folder to find the requested template when rendering
-        -> Templates typically use HTML mixed with Jinja syntax (e.g., `{{ variable_name }}` for placeholders)
-        -> Example: `render_template('greeting.html', username=user_name)` in view function
-        -> When a route is accessed, Flask uses the view function to dynamically generate the content based on the passed data, rendering it into an HTML template
+    -> how templates are used in flask  
+        -> view function passes data (e.g., user’s name) to a template  
+        -> flask's render_template function is used to load the template from the templates folder  
+        -> template files are stored in a directory called `templates` within the project structure  
+        -> flask automatically searches the templates folder to find the requested template when rendering  
+        -> templates typically use html mixed with jinja syntax (e.g., `{{ variable_name }}` for placeholders)  
+        -> example: `render_template('greeting.html', username=user_name)` in view function  
+        -> when a route is accessed, flask uses the view function to dynamically generate the content based on the passed data, rendering it into an html template  
 
-    -> Template rendering in Flask
-        -> Flask loads and processes the template when the route is triggered
-        -> Data passed to templates is used to replace placeholders, resulting in dynamic content being displayed to the user
-        -> Template rendering occurs automatically through Flask’s `render_template()` function, which looks for templates in the `templates` directory
+    -> template rendering in flask  
+        -> flask loads and processes the template when the route is triggered  
+        -> data passed to templates is used to replace placeholders, resulting in dynamic content being displayed to the user  
+        -> template rendering occurs automatically through flask’s `render_template()` function, which looks for templates in the `templates` directory  
 
-    -> Importance of Jinja
-        -> Jinja is the templating engine used in Flask to enhance HTML templates
-        -> While templates in Flask provide basic static HTML structure, Jinja adds powerful features for dynamic rendering and control flow
-        -> Jinja allows dynamic variables (e.g., user’s name) to be inserted into templates seamlessly
-        -> Jinja’s features include:
-            -> Dynamic variable rendering (e.g., `{{ username }}` for dynamic user data)
-            -> Conditional logic (e.g., `if` statements to control which content to show)
-            -> Looping through data (e.g., displaying a list of items dynamically using `for` loops)
-            -> Reusable components via macros (reusable HTML code snippets)
-            -> Template inheritance for maintaining a consistent layout
+    -> importance of jinja  
+        -> jinja is the templating engine used in flask to enhance html templates  
+        -> while templates in flask provide basic static html structure, jinja adds powerful features for dynamic rendering and control flow  
+        -> jinja allows dynamic variables (e.g., user’s name) to be inserted into templates seamlessly  
+        -> jinja’s features include:  
+            -> dynamic variable rendering (e.g., `{{ username }}` for dynamic user data)  
+            -> conditional logic (e.g., `if` statements to control which content to show)  
+            -> looping through data (e.g., displaying a list of items dynamically using `for` loops)  
+            -> reusable components via macros (reusable html code snippets)  
+            -> template inheritance for maintaining a consistent layout  
 
-    -> Features of Jinja
-        -> Conditional logic: Use `{% if condition %} ... {% endif %}` to show different content based on conditions
-            -> Example: Showing a special greeting if the user is logged in or offering a different view for guests
-        -> Loops: Use `{% for item in list %} ... {% endfor %}` to loop through a collection of items (e.g., display a list of products)
-        -> Macros: Create reusable HTML snippets using `{% macro name() %} ... {% endmacro %}`
-            -> Useful for reducing repetitive HTML and making the code cleaner and easier to maintain
-        -> Template inheritance: Share common layout between different pages by creating a base template
-            -> The base template might contain common elements (e.g., header, footer, navigation bar)
-            -> Other templates can inherit from this base template and override specific blocks (e.g., content)
-            -> Example: `{% extends 'base.html' %}` and `{% block content %} ... {% endblock %}` to customise sections
+    -> features of jinja  
+        -> conditional logic: use `{% if condition %} ... {% endif %}` to show different content based on conditions  
+            -> example: showing a special greeting if the user is logged in or offering a different view for guests  
+        -> loops: use `{% for item in list %} ... {% endfor %}` to loop through a collection of items (e.g., display a list of products)  
+        -> macros: create reusable html snippets using `{% macro name() %} ... {% endmacro %}`  
+            -> useful for reducing repetitive html and making the code cleaner and easier to maintain  
+        -> template inheritance: share common layout between different pages by creating a base template  
+            -> the base template might contain common elements (e.g., header, footer, navigation bar)  
+            -> other templates can inherit from this base template and override specific blocks (e.g., content)  
+            -> example: `{% extends 'base.html' %}` and `{% block content %} ... {% endblock %}` to customise sections  
 
-    -> Template Inheritance in Flask
-        -> Base templates allow for centralised changes in shared elements across all pages (e.g., header, footer, styles)
-        -> Other templates can extend this base template and redefine content sections as needed
-        -> This promotes code reuse and ensures consistency across pages, reducing repetitive HTML code
-        -> Example: A base template might include a `<nav>` element, and all other templates would extend it and focus only on the content
+    -> template inheritance in flask  
+        -> base templates allow for centralised changes in shared elements across all pages (e.g., header, footer, styles)  
+        -> other templates can extend this base template and redefine content sections as needed  
+        -> this promotes code reuse and ensures consistency across pages, reducing repetitive html code  
+        -> example: a base template might include a `<nav>` element, and all other templates would extend it and focus only on the content  
 
-    -> Summary of Flask Templates and Jinja
-        -> Templates in Flask are used to dynamically insert content into static HTML
-        -> Jinja is the templating engine that enhances this functionality with conditional logic, loops, macros, and inheritance
-        -> Templates enable dynamic web applications, allowing developers to efficiently manage repetitive content while focusing on custom sections
-        -> Jinja makes templates more powerful by adding logic and reusability to HTML, providing a clean and scalable solution for rendering dynamic pages
+    -> summary of flask templates and jinja  
+        -> templates in flask are used to dynamically insert content into static html  
+        -> jinja is the templating engine that enhances this functionality with conditional logic, loops, macros, and inheritance  
+        -> templates enable dynamic web applications, allowing developers to efficiently manage repetitive content while focusing on custom sections  
+        -> jinja makes templates more powerful by adding logic and reusability to html, providing a clean and scalable solution for rendering dynamic pages  

@@ -1,144 +1,144 @@
--> Template Inheritance in Flask and Jinja2
-    -> Overview of Template Inheritance
-        -> Template inheritance is a powerful feature in Jinja2, allowing you to avoid repeating HTML structure in multiple templates
-        -> It allows you to define common elements (like header, footer, and menu) in a base template and focus on specific content in derived templates
-        -> With template inheritance, the structure (e.g., HTML layout) stays consistent across different pages, while the content of the page can vary
-        -> Child templates inherit the layout and only need to define or override parts that are unique for each page
+-> template inheritance in flask and jinja2  
+    -> overview of template inheritance  
+        -> template inheritance is a powerful feature in jinja2, allowing you to avoid repeating html structure in multiple templates  
+        -> it allows you to define common elements (like header, footer, and menu) in a base template and focus on specific content in derived templates  
+        -> with template inheritance, the structure (e.g., html layout) stays consistent across different pages, while the content of the page can vary  
+        -> child templates inherit the layout and only need to define or override parts that are unique for each page  
 
-    -> Benefits of Template Inheritance
-        -> DRY Principle (Don't Repeat Yourself): Common elements are written once in the base template and reused across child templates
-        -> Easy to maintain: When you want to update a common element (like a header or footer), you only need to update the base template
-        -> Flexibility: While child templates inherit from the base template, they can override or add content to specific sections as needed
+    -> benefits of template inheritance  
+        -> dry principle (don't repeat yourself): common elements are written once in the base template and reused across child templates  
+        -> easy to maintain: when you want to update a common element (like a header or footer), you only need to update the base template  
+        -> flexibility: while child templates inherit from the base template, they can override or add content to specific sections as needed  
 
-    -> Structure of Template Inheritance
-        -> **Base Template (`base.html`)**: Contains the common structure that will be reused across pages
-        -> **Child Templates**: Define specific content that replaces or supplements the content from the base template
-        -> A child template can use `{% extends "base.html" %}` to inherit from the base template, and it can use `{% block %}` to define or override content
+    -> structure of template inheritance  
+        -> **base template (`base.html`)**: contains the common structure that will be reused across pages  
+        -> **child templates**: define specific content that replaces or supplements the content from the base template  
+        -> a child template can use `{% extends "base.html" %}` to inherit from the base template, and it can use `{% block %}` to define or override content  
 
-    -> Creating the Base Template (`base.html`)
-        -> The base template defines the overall structure of the webpage, typically including common HTML tags like `<html>`, `<head>`, `<body>`, and `<footer>`
-        -> Common elements, such as the site’s header, navigation bar, and footer, will be placed in the base template to be inherited across all pages
-        -> The base template will use `{% block %}` tags to define sections that can be overridden or extended by child templates
+    -> creating the base template (`base.html`)  
+        -> the base template defines the overall structure of the webpage, typically including common html tags like `<html>`, `<head>`, `<body>`, and `<footer>`  
+        -> common elements, such as the site’s header, navigation bar, and footer, will be placed in the base template to be inherited across all pages  
+        -> the base template will use `{% block %}` tags to define sections that can be overridden or extended by child templates  
 
-        Example base template (`base.html`):
-        ```html
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>{% block title %}My App{% endblock %}</title>
-            <link rel="stylesheet" href="style.css">
-        </head>
-        <body>
-            <header>
-                <h1>Welcome to My App</h1>
-                <nav>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                    </ul>
-                </nav>
-            </header>
-            <main>
-                {% block body %}{% endblock %}
-            </main>
-            <footer>
-                <p>© 2024 My App</p>
-            </footer>
-        </body>
-        </html>
-        ```
+        example base template (`base.html`):  
+        ```html  
+        <!DOCTYPE html>  
+        <html lang="en">  
+        <head>  
+            <meta charset="UTF-8">  
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+            <title>{% block title %}my app{% endblock %}</title>  
+            <link rel="stylesheet" href="style.css">  
+        </head>  
+        <body>  
+            <header>  
+                <h1>welcome to my app</h1>  
+                <nav>  
+                    <ul>  
+                        <li><a href="/">home</a></li>  
+                        <li><a href="/about">about</a></li>  
+                    </ul>  
+                </nav>  
+            </header>  
+            <main>  
+                {% block body %}{% endblock %}  
+            </main>  
+            <footer>  
+                <p>© 2024 my app</p>  
+            </footer>  
+        </body>  
+        </html>  
+        ```  
 
-    -> Defining Blocks in the Base Template
-        -> A block is a placeholder in the base template where child templates can insert or override content
-        -> Blocks allow flexibility in child templates to define unique content without modifying the entire base structure
-        -> The `block` keyword in Jinja2 starts a section in the template, which can be overridden in child templates using the same block name
+    -> defining blocks in the base template  
+        -> a block is a placeholder in the base template where child templates can insert or override content  
+        -> blocks allow flexibility in child templates to define unique content without modifying the entire base structure  
+        -> the `block` keyword in jinja2 starts a section in the template, which can be overridden in child templates using the same block name  
 
-        Example of a block in `base.html`:
-        ```html
-        <title>{% block title %}My App{% endblock %}</title>
-        <main>
-            {% block body %}{% endblock %}
-        </main>
-        ```
+        example of a block in `base.html`:  
+        ```html  
+        <title>{% block title %}my app{% endblock %}</title>  
+        <main>  
+            {% block body %}{% endblock %}  
+        </main>  
+        ```  
 
-    -> Extending the Base Template in a Derived Template (`derived.html`)
-        -> A derived template inherits from the base template using `{% extends "base.html" %}`. This makes the structure and common content from `base.html` available to the derived template
-        -> Any section that is not overridden will automatically inherit content from the base template
-        -> The child template can define new content for any block defined in the base template
-        -> If a block is not defined in the derived template, the base template’s default content is used
+    -> extending the base template in a derived template (`derived.html`)  
+        -> a derived template inherits from the base template using `{% extends "base.html" %}`. this makes the structure and common content from `base.html` available to the derived template  
+        -> any section that is not overridden will automatically inherit content from the base template  
+        -> the child template can define new content for any block defined in the base template  
+        -> if a block is not defined in the derived template, the base template’s default content is used  
 
-        Example derived template (`derived.html`):
-        ```html
-        {% extends "base.html" %}
+        example derived template (`derived.html`):  
+        ```html  
+        {% extends "base.html" %}  
 
-        {% block title %}Home{% endblock %}
+        {% block title %}home{% endblock %}  
 
-        {% block body %}
-        <h2>Welcome to the Home Page!</h2>
-        <p>This is the homepage content.</p>
-        {% endblock %}
-        ```
+        {% block body %}  
+        <h2>welcome to the home page!</h2>  
+        <p>this is the homepage content.</p>  
+        {% endblock %}  
+        ```  
 
-    -> Rendering the Derived Template in Flask
-        -> In Flask, create a route that renders the derived template and passes any dynamic content to the template
-        -> When the derived template is rendered, it will inherit the base template’s structure and content, replacing the blocks with content from the derived template
-        -> Example Flask route:
-            ```python
-            @app.route('/home')
-            def home():
-                return render_template('derived.html')
-            ```
+    -> rendering the derived template in flask  
+        -> in flask, create a route that renders the derived template and passes any dynamic content to the template  
+        -> when the derived template is rendered, it will inherit the base template’s structure and content, replacing the blocks with content from the derived template  
+        -> example flask route:  
+            ```python  
+            @app.route('/home')  
+            def home():  
+                return render_template('derived.html')  
+            ```  
 
-    -> How Inheritance Works
-        -> The derived template will inherit all content from `base.html`, and the content defined in the `title` and `body` blocks will override the placeholders from the base template
-        -> For instance, the title of the page will be replaced by "Home", and the body content will display the custom heading and paragraph as defined in the derived template
+    -> how inheritance works  
+        -> the derived template will inherit all content from `base.html`, and the content defined in the `title` and `body` blocks will override the placeholders from the base template  
+        -> for instance, the title of the page will be replaced by "home", and the body content will display the custom heading and paragraph as defined in the derived template  
 
-    -> Exploring the `super()` Keyword for Template Inheritance
-        -> The `super()` keyword allows you to access the content of a block from the parent (base) template while still adding custom content in the child template
-        -> It is used to append or prepend content in the child template without fully replacing the base template’s block
-        -> This is useful when you want to modify a block but still retain the original content from the base template
+    -> exploring the `super()` keyword for template inheritance  
+        -> the `super()` keyword allows you to access the content of a block from the parent (base) template while still adding custom content in the child template  
+        -> it is used to append or prepend content in the child template without fully replacing the base template’s block  
+        -> this is useful when you want to modify a block but still retain the original content from the base template  
 
-        Example of using `super()`:
-        ```html
-        {% block title %}
-            {{ super() }} – Home Page
-        {% endblock %}
+        example of using `super()`:  
+        ```html  
+        {% block title %}  
+            {{ super() }} – home page  
+        {% endblock %}  
 
-        {% block body %}
-            <h2>Welcome to the Home Page!</h2>
-            <p>This is the homepage content.</p>
-            <p>Additional content can go here.</p>
-        {% endblock %}
-        ```
+        {% block body %}  
+            <h2>welcome to the home page!</h2>  
+            <p>this is the homepage content.</p>  
+            <p>additional content can go here.</p>  
+        {% endblock %}  
+        ```  
 
-        Explanation:
-            - In the `title` block, `{{ super() }}` includes the content from the base template's `title` block, appending "– Home Page" to it
-            - This ensures that you don’t lose the default title (e.g., "My App") but can extend it with custom content
+        explanation:  
+            - in the `title` block, `{{ super() }}` includes the content from the base template's `title` block, appending "– home page" to it  
+            - this ensures that you don’t lose the default title (e.g., "my app") but can extend it with custom content  
 
-    -> Practical Use of `super()` with the `<head>` Block
-        -> Consider that in the base template, the `<head>` block may include essential meta tags, CSS links, or JavaScript imports
-        -> In the derived template, you might want to add additional `<style>` or `<script>` tags without removing the existing content from the base template
-        -> Using `super()` allows you to keep the base template's `<head>` content and still append your custom elements
+    -> practical use of `super()` with the `<head>` block  
+        -> consider that in the base template, the `<head>` block may include essential meta tags, css links, or javascript imports  
+        -> in the derived template, you might want to add additional `<style>` or `<script>` tags without removing the existing content from the base template  
+        -> using `super()` allows you to keep the base template's `<head>` content and still append your custom elements  
 
-        Example of using `super()` in the `<head>` block:
-        ```html
-        {% block head %}
-            {{ super() }}
-            <style>
-                body { background-color: lightblue; }
-            </style>
-        {% endblock %}
-        ```
+        example of using `super()` in the `<head>` block:  
+        ```html  
+        {% block head %}  
+            {{ super() }}  
+            <style>  
+                body { background-color: lightblue; }  
+            </style>  
+        {% endblock %}  
+        ```  
 
-    -> Rendering Templates with Inheritance
-        -> With Flask's `render_template()` function, when rendering a child template, Flask automatically processes the inheritance structure
-        -> The base template is processed first, and then the child template overrides or adds content in the appropriate blocks
-        -> This makes it very easy to build complex pages with common structure and dynamic content
+    -> rendering templates with inheritance  
+        -> with flask's `render_template()` function, when rendering a child template, flask automatically processes the inheritance structure  
+        -> the base template is processed first, and then the child template overrides or adds content in the appropriate blocks  
+        -> this makes it very easy to build complex pages with common structure and dynamic content  
 
-    -> Benefits of Using Template Inheritance and `super()`
-        -> **Efficiency**: Reduces the need for repetitive HTML structure by centralising common elements in a single base template
-        -> **Maintainability**: Makes future updates easier; modifying a common element in the base template (like the navigation bar) will automatically propagate to all child templates
-        -> **Customisation**: Child templates have the flexibility to extend or modify base content by using blocks and `super()`, making the template system both powerful and adaptable
-        -> **Organisation**: Keeps code organised by separating common structure from page-specific content, making it easier to manage complex web applications
+    -> benefits of using template inheritance and `super()`  
+        -> **efficiency**: reduces the need for repetitive html structure by centralising common elements in a single base template  
+        -> **maintainability**: makes future updates easier; modifying a common element in the base template (like the navigation bar) will automatically propagate to all child templates  
+        -> **customisation**: child templates have the flexibility to extend or modify base content by using blocks and `super()`, making the template system both powerful and adaptable  
+        -> **organisation**: keeps code organised by separating common structure from page-specific content, making it easier to manage complex web applications  

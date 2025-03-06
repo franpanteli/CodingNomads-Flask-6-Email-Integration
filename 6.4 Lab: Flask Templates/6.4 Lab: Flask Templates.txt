@@ -1,17 +1,17 @@
--> Flask Templates, Jinja, and You Lesson  
-   -> Lab: Flask Templates  
+-> flask templates, jinja, and you lesson  
+   -> lab: flask templates  
 
--> If you have not already cloned the Python Flask labs project and opened it in VS Code,  
+-> if you have not already cloned the python flask labs project and opened it in vs code,  
    -> please do so before proceeding with this lab  
 
--> Learn by Doing  
-   -> 1. Navigate to the labs project directory and open it in VS Code  
-   -> 2. Complete all the exercises found in the folder. There are three labs to work through:  
-      -> 06_page_templates_jinja: Focuses on working with Jinja templates in Flask  
-      -> 01_rendering_the_routes: Covers rendering routes in a Flask application  
-      -> 02_template_inheritance: Teaches template inheritance in Flask for reusability and DRY code  
-      -> 03_flask_bootstrap: Introduces Flask Bootstrap for integrating front-end styling and components  
+-> learn by doing  
+   -> 1. navigate to the labs project directory and open it in vs code  
+   -> 2. complete all the exercises found in the folder. there are three labs to work through:  
+      -> 06_page_templates_jinja: focuses on working with jinja templates in flask  
+      -> 01_rendering_the_routes: covers rendering routes in a flask application  
+      -> 02_template_inheritance: teaches template inheritance in flask for reusability and dry code  
+      -> 03_flask_bootstrap: introduces flask bootstrap for integrating front-end styling and components  
 
--> 3. If you're subscribed to the membership or mentorship programmes, feel free to reach out on Discord for assistance or a review of your work!  
+-> 3. if you're subscribed to the membership or mentorship programmes, feel free to reach out on discord for assistance or a review of your work!  
 
--> 4. Once you have completed the labs, ensure you push your work to GitHub for version control and sharing with others  
+-> 4. once you have completed the labs, ensure you push your work to github for version control and sharing with others  

@@ -1,77 +1,77 @@
--> Implementing Conditional Rendering and Loops in Jinja Templates
-    -> Overview of Conditional Rendering
-        -> The goal is to display different content based on whether the user is signed in or not
-        -> Reuse the `user.html` template to demonstrate conditional rendering
-        -> For this example, simulate the sign-in process to conditionally render content
-        -> Jinja's conditional rendering is similar to Python's `if` statements but uses its own syntax for control structures
+-> implementing conditional rendering and loops in jinja templates  
+    -> overview of conditional rendering  
+        -> the goal is to display different content based on whether the user is signed in or not  
+        -> reuse the `user.html` template to demonstrate conditional rendering  
+        -> for this example, simulate the sign-in process to conditionally render content  
+        -> jinja's conditional rendering is similar to python's `if` statements but uses its own syntax for control structures  
 
-    -> Jinja Control Structures
-        -> Jinja control structures use curly braces `{}` with a percent symbol `%`
-        -> Control structures are written as `{% if condition %}` to start and `{% endif %}` to end the block
-        -> This structure is used for conditional logic, loops, and other control flows
-        -> The key difference from Python's `if` statements is that Jinja uses a different syntax for control flow and template logic
+    -> jinja control structures  
+        -> jinja control structures use curly braces `{}` with a percent symbol `%`  
+        -> control structures are written as `{% if condition %}` to start and `{% endif %}` to end the block  
+        -> this structure is used for conditional logic, loops, and other control flows  
+        -> the key difference from python's `if` statements is that jinja uses a different syntax for control flow and template logic  
 
-    -> Writing Conditionals in Jinja
-        -> In Jinja, use `{% if variable %}` to check if a variable is defined or has a specific value
-        -> Example: `{% if username %}` checks if the `username` variable is present in the template
-        -> If the condition is true, content inside the block will be rendered, such as a personalised greeting
-        -> If the condition is false (e.g., `username` is not defined), alternative content can be rendered using `{% else %}`
+    -> writing conditionals in jinja  
+        -> in jinja, use `{% if variable %}` to check if a variable is defined or has a specific value  
+        -> example: `{% if username %}` checks if the `username` variable is present in the template  
+        -> if the condition is true, content inside the block will be rendered, such as a personalised greeting  
+        -> if the condition is false (e.g., `username` is not defined), alternative content can be rendered using `{% else %}`  
 
-    -> Rendering Based on Variable Existence
-        -> The condition `{% if username %}` checks if the `username` exists or is not `None`
-        -> If true, Jinja will render the greeting message with the username (e.g., "Hello, Tim!")
-        -> If false, the template will render a different message for anonymous users (e.g., "Hello, Guest!")
-        -> The syntax `{% endif %}` is used to close the conditional block, ensuring proper structure and logic flow
+    -> rendering based on variable existence  
+        -> the condition `{% if username %}` checks if the `username` exists or is not `none`  
+        -> if true, jinja will render the greeting message with the username (e.g., "hello, tim!")  
+        -> if false, the template will render a different message for anonymous users (e.g., "hello, guest!")  
+        -> the syntax `{% endif %}` is used to close the conditional block, ensuring proper structure and logic flow  
 
-    -> Simulation of a Signed-Out User
-        -> Save the changes to the template and reload the Flask app to test
-        -> To simulate a signed-out user, remove the `username` variable from the `render_template` call in the route function
-        -> When `username` is not passed to the template, the condition `{% if username %}` will evaluate to false, and the "Hello, Guest!" message will be displayed
-        -> Once the `username` is added back into the `render_template` call, the personalised greeting will appear, showing the user’s name
+    -> simulation of a signed-out user  
+        -> save the changes to the template and reload the flask app to test  
+        -> to simulate a signed-out user, remove the `username` variable from the `render_template` call in the route function  
+        -> when `username` is not passed to the template, the condition `{% if username %}` will evaluate to false, and the "hello, guest!" message will be displayed  
+        -> once the `username` is added back into the `render_template` call, the personalised greeting will appear, showing the user’s name  
 
-    -> Using Loops in Jinja Templates
-        -> Loops are used to dynamically render lists or collections of data in a template
-        -> In this example, the goal is to display a list of songs using a loop
-        -> Instead of hardcoding each song manually, a loop allows you to iterate through a list of songs and render each item dynamically
+    -> using loops in jinja templates  
+        -> loops are used to dynamically render lists or collections of data in a template  
+        -> in this example, the goal is to display a list of songs using a loop  
+        -> instead of hardcoding each song manually, a loop allows you to iterate through a list of songs and render each item dynamically  
 
-    -> Creating the `songs.html` Template
-        -> Create a new template called `songs.html` to render the list of songs
-        -> Define the route `/songs` in Flask to render this new template
-        -> In your route function, pass the list of songs as a variable to the template
-        -> The list could start with one song and later grow to include more songs
+    -> creating the `songs.html` template  
+        -> create a new template called `songs.html` to render the list of songs  
+        -> define the route `/songs` in flask to render this new template  
+        -> in your route function, pass the list of songs as a variable to the template  
+        -> the list could start with one song and later grow to include more songs  
 
-    -> Rendering a Song with a Placeholder
-        -> In the `songs.html` template, you can use placeholders like `{{ songs[0] }}` to render the first element of the list
-        -> Placeholders allow you to insert dynamic content into the HTML (e.g., the first song in the list)
-        -> Test by navigating to `/songs` to verify that the first song is rendered
+    -> rendering a song with a placeholder  
+        -> in the `songs.html` template, you can use placeholders like `{{ songs[0] }}` to render the first element of the list  
+        -> placeholders allow you to insert dynamic content into the html (e.g., the first song in the list)  
+        -> test by navigating to `/songs` to verify that the first song is rendered  
 
-    -> Rendering Lists with Loops
-        -> Instead of manually referencing each song, use a loop to dynamically generate list items
-        -> The loop starts with `{% for song in songs %}` and ends with `{% endfor %}`
-        -> Inside the loop, you can render each song from the list one by one
-        -> Jinja provides a simple and readable syntax for looping through data structures like lists or dictionaries
+    -> rendering lists with loops  
+        -> instead of manually referencing each song, use a loop to dynamically generate list items  
+        -> the loop starts with `{% for song in songs %}` and ends with `{% endfor %}`  
+        -> inside the loop, you can render each song from the list one by one  
+        -> jinja provides a simple and readable syntax for looping through data structures like lists or dictionaries  
 
-    -> Wrapping the Loop in HTML
-        -> To display the songs in an unordered list, wrap the loop in `<ul>` tags
-        -> For each song, use the `<li>` tags to display each song as a list item in the HTML
-        -> Example:
-            ```html
-            <ul>
-                {% for song in songs %}
-                    <li>{{ song }}</li>
-                {% endfor %}
-            </ul>
-            ```
-        -> This generates a dynamic list where each song is displayed as a list item on the webpage
+    -> wrapping the loop in html  
+        -> to display the songs in an unordered list, wrap the loop in `<ul>` tags  
+        -> for each song, use the `<li>` tags to display each song as a list item in the html  
+        -> example:  
+            ```html  
+            <ul>  
+                {% for song in songs %}  
+                    <li>{{ song }}</li>  
+                {% endfor %}  
+            </ul>  
+            ```  
+        -> this generates a dynamic list where each song is displayed as a list item on the webpage  
 
-    -> Testing Dynamic List Rendering
-        -> Go to your browser and refresh the `/songs` route
-        -> You should now see a dynamically rendered list of songs displayed on the page
-        -> The power of Jinja loops is evident because you no longer need to hardcode each song individually
-        -> This is particularly useful when you have a large amount of data or when the data is fetched dynamically from a database
+    -> testing dynamic list rendering  
+        -> go to your browser and refresh the `/songs` route  
+        -> you should now see a dynamically rendered list of songs displayed on the page  
+        -> the power of jinja loops is evident because you no longer need to hardcode each song individually  
+        -> this is particularly useful when you have a large amount of data or when the data is fetched dynamically from a database  
 
-    -> Conclusion on Jinja Loops and Conditionals
-        -> Jinja’s control structures (conditionals and loops) are essential tools for rendering dynamic content in Flask templates
-        -> Conditionals allow you to show different content based on the data passed to the template, such as user login status
-        -> Loops make it easy to dynamically render collections of items like song lists, user lists, or any data
-        -> These tools allow you to write cleaner, more flexible templates, making your Flask applications more dynamic and maintainable
+    -> conclusion on jinja loops and conditionals  
+        -> jinja’s control structures (conditionals and loops) are essential tools for rendering dynamic content in flask templates  
+        -> conditionals allow you to show different content based on the data passed to the template, such as user login status  
+        -> loops make it easy to dynamically render collections of items like song lists, user lists, or any data  
+        -> these tools allow you to write cleaner, more flexible templates, making your flask applications more dynamic and maintainable  
